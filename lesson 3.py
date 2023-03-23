@@ -152,7 +152,7 @@ class Auto:
             self.strength -= 1
             return True
         else:
-            print('Хана машине. Сиди,ищи проблему')
+            print('Хана машине.Сиди,ищи проблему')
             return False
 
 
