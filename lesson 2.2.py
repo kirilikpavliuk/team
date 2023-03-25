@@ -39,9 +39,9 @@ class Student():
         for i in range (1, 2,):
             if self.progress <0.5:
                 self.to_study()
-            if self.money < 90:
+            elif self.money < 90:
                 self.to_study()
-            if self.gladness < 30:
+            elif self.gladness < 30:
                 self.to_chill()
     def to_study(self):
         print('Time to study')
