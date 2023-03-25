@@ -2,11 +2,12 @@ import random
 
 
 class Human:
-    def __init__(self, name='Human', job=None, home=None, car=None):
+    def __init__(self, name='Human', job=None, home=None, car=None, hobby=None):
         self.name = name
         self.job = job
         self.home = home
         self.car = car
+        self.hobby = hobby
 
         self.gladness = 50
         self.satiety = 50
@@ -14,6 +15,9 @@ class Human:
 
     def get_home(self):
         self.home = House()
+
+    def get_hobby(self):
+        self.hobby = Hobby(hobby_for)
 
     def get_car(self):
         self.car = Auto(brands_of_car)
@@ -91,6 +95,9 @@ class Human:
         print(f'Strength = {self.car.strength}')
 
     def is_alive(self):
+        if self.gladness >= 0 and self.gladness < 10:
+            print(f'{Hobby} срочно!')
+            self.hobby()
         if self.gladness < 0:
             print('depression')
             return False
@@ -110,6 +117,8 @@ class Human:
             self.get_car()
         if self.job is None:
             self.get_job()
+        if self.hobby is None:
+            self.get_hobby()
 
         self.days_indexes(day)
         dice = random.randint(1, 4)
@@ -156,6 +165,14 @@ class Auto:
             return False
 
 
+class Hobby:
+    def __init__(self, hobby_dict):
+        self.doing = random.choice(list(hobby_dict))
+        self.gladness_plus = hobby_dict[self.doing]['gladness_plus']
+        self.satiety_less = hobby_dict[self.doing]['satiety_less']
+        self.money_less = hobby_dict[self.doing]['money_less']
+
+
 class House:
     def __init__(self):
         self.food = 0
@@ -167,6 +184,25 @@ class Job:
         self.job = random.choice(list(job_dict))
         self.salary = job_dict[self.job]['salary']
         self.gladness_less = job_dict[self.job]['gladness_less']
+
+
+hobby_for = {
+    'football': {
+        'gladness_plus': 5,
+        'satiety_less': 2,
+        'money_less': 0
+    },
+    'shopping_clothing': {
+        'gladness_plus': 10,
+        'satiety_less': 1,
+        'money_less': 10
+    },
+    'TV': {
+        'gladness_plus': 7,
+        'satiety_less': -3,
+        'money_less': 1
+    }
+}
 
 
 jobs = {
