@@ -8,7 +8,6 @@ def divider(a, b):
         return a/b
     except Exception as exc:
         return exc
-
 data = {10: 2, 2: 5, "123": 4, 18: 0, 8 : 4}
 
 for key in data:
